@@ -2,8 +2,8 @@ import pandas as pd
 
 data = pd.read_csv("sales_data.txt")
 
-expected_columns = ['Product', 'Price', 'Quantity', 'Tax']
-for col in expected_columns:
+expected = ['Product', 'Price', 'Quantity', 'Tax']
+for col in expected:
     if col not in data.columns:
         raise NameError(f"Missing expected column: {col}")
 
@@ -15,4 +15,5 @@ data[['Revenue Before Tax', 'Revenue After Tax']] = data[['Revenue Before Tax', 
 filter_100 = data[data['Revenue Before Tax']>100]
 data['Product'] = data['Product'].apply(lambda x: x.upper())
 
-print(data)
+print(data.info())
+
